@@ -1,0 +1,79 @@
+#!/bin/bash
+
+#Author Bruno Goncalves  <www.biglinux.com.br>
+#License: GPLv2 or later                       
+#################################################
+
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=bigocrpdf
+
+# Don't group windows
+xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -set WM_CLASS "$$"
+
+
+# Import BigControlCenter base modules / Importa os módulos básicos do BigControlCenter
+# That's include jquery and materialize / Isso inclui o jquery e o materialize
+# http://materializecss.com/
+. /usr/share/bigbashview/bcc/shell/base.sh
+
+  echo '
+  <body>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/usr/share/bigbashview/bcc/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/usr/share/bigbashview/bcc/materialize/css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="theme.css">
+    <script src="/usr/share/bigbashview/bcc/materialize/js/jquery.js"></script>
+    <script src="/usr/share/bigbashview/bcc/materialize/js/materialize.js"></script>
+    <script src="/usr/share/bigbashview/bcc/js/big.js"></script>
+  </head>'
+
+  echo '<style>
+div#textApt {
+    height: 50%;
+}
+</style>'
+
+  echo '<title>' $"Make your PDF searchable" '</title>'
+
+
+
+echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
+
+echo '<div id=page2>'
+
+echo '<div id="middle" class="bar">'
+
+#Open terminal
+WINDOW_ID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" urxvt +sb  -depth 32 -fg white -fn "xft:Ubuntu Mono:pixelsize=18" -pixmap terminalbg.jpg -embed $(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2) -sr -bc -e /usr/share/bigbashview/bcc/apps/bigocrpdf/run_terminal.sh
+
+
+
+    echo '<div id=top>'
+    
+    echo '<style>
+    div#top {
+    position: absolute;
+    top: 50%;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+</style>'
+    
+    echo $"Completed!"
+    echo '</div>'
+
+    echo '<div id=buttonSpace></div>'
+    echo '<div id=buttonBar>'
+    echo '<a href="/usr/share/bigbashview/close.sh" class="waves-effect waves-light btn"><i class="material-icons left"><img src=cancel.png></i>' $"Close" '</a>'
+    
+
+echo '</div>'
+
+echo "</div></div>"
+
+echo '</h1></div>'
+echo '</div></div>'

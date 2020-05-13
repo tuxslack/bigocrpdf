@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=bigocrpdf
+
+mkdir -p ~/.config/bigocrpdf
+
+echo "$1" > ~/.config/bigocrpdf/selected-file
+
+cd /usr/share/bigbashview/bcc/apps/bigocrpdf/
+
+GDK_BACKEND=x11 SDL_VIDEODRIVER=x11 QT_QPA_PLARFORM=xcb bigbashview index.sh.htm -s 1050x600 -i icon.png

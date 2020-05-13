@@ -1,0 +1,173 @@
+#!/bin/bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=bigocrpdf
+
+# Don't group windows
+xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -set WM_CLASS "$$"
+
+
+# Import BigControlCenter base modules / Importa os módulos básicos do BigControlCenter
+# That's include jquery and materialize / Isso inclui o jquery e o materialize
+# http://materializecss.com/
+. /usr/share/bigbashview/bcc/shell/base.sh
+
+  echo '
+  <body>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/usr/share/bigbashview/bcc/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/usr/share/bigbashview/bcc/materialize/css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="theme.css">
+    <script src="/usr/share/bigbashview/bcc/materialize/js/jquery.js"></script>
+    <script src="/usr/share/bigbashview/bcc/materialize/js/materialize.js"></script>
+    <script src="/usr/share/bigbashview/bcc/js/big.js"></script>'
+  echo '</head>'
+  echo '<title>' $"Make your PDF searchable" '</title>'
+
+FILE="$(cat ~/.config/bigocrpdf/selected-file)"
+PAGES="$(pdfinfo "$FILE" | grep "Pages:" | cut -f2 -d:)"
+FOLDER="$(dirname "$FILE")"
+FILENAME="$(basename "$FILE" | sed 's|\.pdf$||gI')"
+
+NORMAL=$"NORMAL"
+ECONOMIC=$"ECONOMIC"
+ECONOMICPLUS=$"ECONOMIC PLUS"
+SPANISH=$"SPANISH"
+ENGLISH=$"ENGLISH"
+PORTUGUESE=$"PORTUGUESE"
+TOOLTIP_QUALITY=$"You can choose to reduce the image quality.<br>This way you will have smaller files, making it easier,<br>for example, to send them by e-mail."
+TOOLTIP_LANG=$"To add new languages, install the tesseract add-ons in the system's package manager."
+
+
+if [ ! -w "$FOLDER" ]
+then
+    FOLDER="$HOME"
+fi
+
+if [[ -e "${FOLDER}/${FILENAME}-ocr.pdf" || -L "${FOLDER}/${FILENAME}-ocr.pdf" ]] ; then
+    i=2
+    while [[ -e "${FOLDER}/${FILENAME}-ocr${i}.pdf" || -L "${FOLDER}/${FILENAME}-ocr${i}.pdf" ]] ; do
+        let i++
+    done
+        SAVEFILE="${FOLDER}/${FILENAME}-ocr${i}.pdf"
+    else
+        SAVEFILE="${FOLDER}/${FILENAME}-ocr.pdf"
+fi
+
+
+echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
+
+
+OIFS=$IFS
+IFS=$'\n'
+
+
+echo '<div id=page2>'
+echo '<div id="middle" class="bar">'
+echo '<form action="run.sh.htm" method="get">'
+
+echo '<div id=top>' $"Make your .pdf files that have been digitized, have the ability to search and copy texts." '</div>'
+echo $"Selected file:"
+echo "$FILE"
+echo "<br><br>"
+echo $"Pages:"
+echo "$PAGES"
+echo "<br><br>"
+
+
+echo "<div id=options>"
+echo "<div id=options_left>"
+
+echo $"PDF language: "
+echo "</div>"
+
+echo "<div id=options_right  class=\"tooltipped with-gap\" data-position=\"top\" data-delay=\"50\" data-tooltip=\"<br>$TOOLTIP_LANG<br><br>\">"
+
+echo '<select id="lang" name="lang">'
+
+# Verify previous selected LANG
+PDF_LANG="$(cat ~/.config/bigocrpdf/lang)"
+
+# if not previous selected use portuguese if the system is in portuguese
+if [ "$PDF_LANG" = "" ] && [ "$(echo $LANG | grep ^pt)" != "" ];then
+    PDF_LANG="por"
+fi
+
+# if not previous selected use portuguese if the system not in portuguese
+if [ "$PDF_LANG" = "" ] && [ "$(echo $LANG | grep ^pt)" = "" ];then
+    PDF_LANG="eng"
+fi
+
+    for i  in  $(tesseract --list-langs | grep -ve " " | grep -ve "osd"); do
+
+        CHECKED_LANG=""
+        if [ "$PDF_LANG" = "$i" ]; then
+            CHECKED_LANG="selected"
+        fi
+        
+
+        if [ "$i" = "por" ]
+        then
+            LANG_NAME="$PORTUGUESE"
+
+        elif [ "$i" = "eng" ]
+        then
+            LANG_NAME="$ENGLISH"
+
+        elif [ "$i" = "spa" ]
+        then
+            LANG_NAME="$SPANISH"
+        else
+            LANG_NAME="$i"
+        fi
+
+        echo "<option value=\"$i\" $CHECKED_LANG>$LANG_NAME</option>"
+    done
+    
+echo '</select></div></div><br>'
+
+echo "<div id=options>"
+echo "<div id=options_left>"
+
+echo $"PDF quality: "
+echo "</div>"
+
+echo "<div id=options_right  class=\"tooltipped with-gap\" data-position=\"top\" data-delay=\"50\" data-tooltip=\"<br>$TOOLTIP_QUALITY<br><br>\">"
+    
+# Verify previous selected LANG
+PDF_QUALITY="$(cat ~/.config/bigocrpdf/quality)"
+
+if [ "$PDF_QUALITY" = "" ] || [ "$PDF_QUALITY" = "1" ];then
+    NORMAL_CHECKED="selected"
+fi
+
+if [ "$PDF_QUALITY" = "2" ];then
+    ECONOMIC_CHECKED="selected"
+fi
+
+if [ "$PDF_QUALITY" = "3" ];then
+    ECONOMIC_PLUS_CHECKED="selected"
+fi
+        echo "<select name=quality id=quality>"
+        echo "<option value=\"1\" $CHECKED_LANG>$NORMAL</option>"
+        echo "<option value=\"2\" $ECONOMIC_CHECKED>$ECONOMIC</option>"
+        echo "<option value=\"3\" $ECONOMIC_PLUS_CHECKED>$ECONOMICPLUS</option>"
+
+
+echo '</select></div></div>'
+
+echo "<br>"
+echo $"Save file:"
+echo "$SAVEFILE" "</div></div>"
+
+echo "<input type=\"hidden\" id=\"savefile\" name=\"savefile\" value=\"$SAVEFILE\">"
+
+
+echo '<div id=buttonBar>'
+echo '<a href="/usr/share/bigbashview/close.sh" class="waves-effect waves-light btn"><i class="material-icons left"><img src=cancel.png></i>' $"Cancel" '</a>'
+echo '<button type="submit" class="waves-effect waves-light btn"><i class="material-icons left"><img src=ok.png></i>'$"Apply"'</button>'
+echo '</form></div>'
+echo "</div></div>"
+

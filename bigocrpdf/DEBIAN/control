@@ -1,0 +1,11 @@
+Package: bigocrpdf
+Version: 1.0.0-1big3
+Depends: tesseract-ocr, poppler-utils, bigbashview, ocrmypdf, pngquant
+Recommends: tesseract-ocr-por, tesseract-ocr-eng, tesseract-ocr-esp, jbig2enc
+Architecture: all
+Maintainer: Bruno Goncalves <www.biglinux.com.br>
+Section: admin
+Priority: optional
+Installed-Size:104
+Description: The simplest way to apply OCR to your PDF files, making it possible to search and copy texts from scanned files.
+

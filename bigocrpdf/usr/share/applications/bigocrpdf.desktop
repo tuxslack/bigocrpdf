@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Make your scanned PDF support text search and copy (OCR)
+Name[pt]=Adicionar suporte a copiar ou procurar textos em PDF digitalizado (OCR)
+Name[es]=Agrega soporte para copiar o buscar texto en PDF escaneado (OCR)
+Exec=bigocrpdf %f
+Terminal=false
+Icon=application-pdf
+Type=Application
+MimeType=application/pdf;application/x-bzpdf;application/x-gzpdf;

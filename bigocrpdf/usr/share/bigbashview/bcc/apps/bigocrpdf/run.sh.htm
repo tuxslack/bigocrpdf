@@ -1,0 +1,67 @@
+#!/bin/bash
+
+#Author Bruno Goncalves  <www.biglinux.com.br>
+#License: GPLv2 or later                       
+#################################################
+
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=bigocrpdf
+
+# Don't group windows
+xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -set WM_CLASS "$$"
+
+echo "$p_quality" > ~/.config/bigocrpdf/quality
+echo "$p_lang" > ~/.config/bigocrpdf/lang
+echo "$p_savefile" > ~/.config/bigocrpdf/savefile
+
+# Import BigControlCenter base modules / Importa os módulos básicos do BigControlCenter
+# That's include jquery and materialize / Isso inclui o jquery e o materialize
+# http://materializecss.com/
+. /usr/share/bigbashview/bcc/shell/base.sh
+
+  echo '
+  <body>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/usr/share/bigbashview/bcc/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/usr/share/bigbashview/bcc/materialize/css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="theme.css">
+    <script src="/usr/share/bigbashview/bcc/materialize/js/jquery.js"></script>
+    <script src="/usr/share/bigbashview/bcc/materialize/js/materialize.js"></script>
+    <script src="/usr/share/bigbashview/bcc/js/big.js"></script>
+  </head>'
+  echo '<title>' $"Make your PDF searchable" '</title>'
+
+
+
+
+
+echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
+
+
+echo '<div id=page2>'
+
+echo '<div id="middle" class="bar">'
+
+echo '<div id=top>'
+echo $"Processing, please wait..."
+echo '</div>'
+
+echo '</div>'
+
+echo "</div></div>"
+
+
+echo '</h1></div>'
+echo '</div></div>'
+
+echo '<script>'
+
+    echo 'function pageRedirect() {
+        window.location.replace("run2.sh.htm");
+    }      
+    setTimeout("pageRedirect()", 10);
+</script>'
+

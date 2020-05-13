@@ -1,0 +1,201 @@
+
+body {
+			background-image: url(/usr/share/wallpapers/dandelion2.jpg) ;
+			background-position: center center;
+			background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+			background-color: #000;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+padding: 0px;
+font-weight: 250;
+color: rgba(255, 255, 255, 1);
+font-family: 'Ubuntu';
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+
+div#loading {
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 30px;
+}
+
+div#broken {
+    font-weight: 400;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 30px;
+    background: #00000085;
+    width: 100%;
+    height: 100%;
+    padding-top: 26%;
+    text-align: center;
+    font-family: ubuntu;
+}
+
+#page2 {
+	margin-right: 10%;
+	margin-left: 10%;
+	height: 100%;
+}
+
+
+#middle {
+    vertical-align: middle;
+    word-break: break-all;
+    min-width: 720px;
+    width: 100%;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 10%;
+    font-size: 19px;
+    display: inline-table;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-top: 0px;
+    border-bottom: 0px;
+    height: 100%;
+    top: 0%;
+}
+
+.backdrop {
+background-color: rgba(111, 111, 111, 1);
+}
+
+.bar {
+  position: relative;
+  color: #fff;
+      font-weight: 400;
+  background: rgba(0,0,0,0.65);
+  box-shadow: 0px 0px 95px 0px rgba(0,0,0,1);
+	height: 100%;
+}
+
+#options {
+    display: inline-flex;
+    align-items: baseline;
+}
+
+div#options_left {
+    margin-right: 10px;
+    width: 180px;
+}
+
+.select-wrapper input.select-dropdown {
+background-color: #00000024;
+    color: white;
+    font-size: 18px !important;
+    border-radius: 8px;
+    width: 190px !important;
+    padding-left: 9px !important;
+    text-transform: uppercase;
+}
+
+.bar:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  top: 0; right: 0; left: 0;
+  filter: blur(15px);
+  -webkit-filter: blur(15px);
+	height: 100%;
+}
+
+.material-tooltip {font-family:ubuntu;
+font-weight:400;font-size:18px;
+line-height: 120%;}
+
+.with-gap {color: #ffffff !important;
+font-size:20px !important;
+margin-left:20px;
+margin-right:20px;
+}
+
+
+
+label.tooltipped.with-gap {
+    margin-top: 14px;
+    margin-left: 21px;
+    margin-right: 50px;
+}
+
+div#theme2-2 {
+    margin-top: 30px;
+}
+
+.btn, .btn-large {
+    background-color: #a5a5a559;
+    border-radius: 10px;
+
+}
+
+.btn-large:hover {
+    background-color: #ffffffd9;
+    color: #000000;
+}
+
+div#top {
+    text-align: -webkit-center;
+    margin-top: -8%;
+    font-size: 24px;
+    margin-bottom: 27px;
+    word-break: break-word;
+}
+
+i.material-icons.left {
+    margin-top: 7px;
+    margin-right: 9px;
+    margin-left: -4px;
+}
+
+div#buttonBar {
+    width: 100%;
+    text-align: -webkit-center;
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+div#buttonSpace {
+margin-top: 60px;
+}
+
+
+.btn, .btn-large {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+div#packages_to_remove, div#number_remove_packages {
+    color: #ffcdcd;
+}
+
+div#number_upgraded_packages, div#packages_to_upgrade {
+    color: #fff4b9;
+}
+
+
+
+div#download_size, div#number_new_packages, div#additional_packages_to_install, div#local_packages_to_install {
+    color: #b9ffbf;
+}
+
+
+div#oneline {
+    display: inline-flex;
+}
+
+div#download_size, div#number_new_packages, div#number_remove_packages, div#number_upgraded_packages {
+    margin-left: 7px;
+} 
