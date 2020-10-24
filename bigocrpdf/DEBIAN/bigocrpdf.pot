@@ -7,7 +7,7 @@
 msgid   ""
 msgstr  "Project-Id-Version: bigocrpdf\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2020-05-12 19:59-0300\n"
+        "POT-Creation-Date: 2020-05-16 13:28-0300\n"
         "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,15 @@ msgstr  "Project-Id-Version: bigocrpdf\n"
         "Content-Transfer-Encoding: 8bit\n"
 
 msgid   "Make your PDF searchable"
+msgstr  ""
+
+msgid   "Processing, please wait..."
+msgstr  ""
+
+msgid   "Completed!"
+msgstr  ""
+
+msgid   "Close"
 msgstr  ""
 
 msgid   "NORMAL"
@@ -69,13 +78,4 @@ msgid   "Cancel"
 msgstr  ""
 
 msgid   "Apply"
-msgstr  ""
-
-msgid   "Processing, please wait..."
-msgstr  ""
-
-msgid   "Completed!"
-msgstr  ""
-
-msgid   "Close"
 msgstr  ""

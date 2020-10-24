@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=OCR to scanned PDF
+Name[pt]=OCR para PDF digitalizado
+Name[es]=OCR a PDF escaneado
+Exec=bigocrpdf-open
+Terminal=false
+Icon=application-pdf
+Type=Application
+NoDisplay=false
+MimeType=
+Categories=Utility;

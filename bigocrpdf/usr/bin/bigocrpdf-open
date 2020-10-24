@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#Translation
+export TEXTDOMAINDIR="/usr/share/locale"
+export TEXTDOMAIN=bigocrpdf
+
+kdialog --passivepopup $"Escolha o arquivo PDF para aplicar o OCR, com isso será possível efetuar buscas ou copiar textos.
+
+Você também pode utilizar o gerenciador de arquivos, clicar com o botão direito no arquivo PDF, 'Abrir com' e selecionar a opção de OCR."  10 &
+
+FILE_ADDR="$(kdialog --getopenfilename ~)"
+
+if [ "$FILE_ADDR" != "" ]; then
+    bigocrpdf "$FILE_ADDR"
+fi
+
+
