@@ -1,5 +1,5 @@
 Package: bigocrpdf
-Version: 1.0.1-1big1
+Version: 1.0.1-1big2
 Depends: tesseract-ocr, poppler-utils, bigbashview, ocrmypdf, pngquant
 Recommends: tesseract-ocr-por, tesseract-ocr-eng, tesseract-ocr-esp, jbig2enc
 Architecture: all
