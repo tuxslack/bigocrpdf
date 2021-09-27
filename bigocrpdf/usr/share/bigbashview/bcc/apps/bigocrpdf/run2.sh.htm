@@ -47,7 +47,7 @@ echo '<div id=page2>'
 echo '<div id="middle" class="bar">'
 
 #Open terminal
-WINDOW_ID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" urxvt +sb  -depth 32 -fg white -fn "xft:Ubuntu Mono:pixelsize=18" -pixmap terminalbg.jpg -embed $(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2) -sr -bc -e /usr/share/bigbashview/bcc/apps/bigocrpdf/run_terminal.sh
+WINDOW_ID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" urxvt +sb  -depth 32 -bg \#453c2b -fg white -fn "xft:Ubuntu Mono:pixelsize=18" -embed $(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2) -sr -bc -e /usr/share/bigbashview/bcc/apps/bigocrpdf/run_terminal.sh
 
 
 
