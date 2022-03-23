@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+xdg-open "$(cat ~/.config/bigocrpdf/savefile)"

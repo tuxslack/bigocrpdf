@@ -5,7 +5,7 @@
 #################################################
 
 
-PID="$$" WINDOW_ID="$WINDOW_ID" ./run_terminal_resize.sh &
+PID="$$" MARGIN_TOP_MOVE="-90" WINDOW_HEIGHT=12 WINDOW_ID="$WINDOW_ID" ./run_terminal_resize.sh &
 
 OIFS=$IFS
 IFS=$'\n'

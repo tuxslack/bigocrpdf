@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+dolphin --select "$(cat ~/.config/bigocrpdf/savefile)"
