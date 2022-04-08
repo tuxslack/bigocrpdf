@@ -21,7 +21,6 @@ else
     OCR_LANG="osd"
 fi
 
-kdialog --msgbox "$*"
 
 tesseract -l $OCR_LANG "$*" "$HOME/.config/bigocrpdf/text"
 
