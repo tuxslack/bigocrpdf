@@ -18,7 +18,7 @@ export TEXTDOMAIN=bigocrpdf
 
 mkdir -p ~/.config/bigocrpdf
 
-echo "$1" > ~/.config/bigocrpdf/selected-file
+echo "$*" > ~/.config/bigocrpdf/selected-file
 
 cd /usr/share/bigbashview/bcc/apps/bigocrpdf/
 

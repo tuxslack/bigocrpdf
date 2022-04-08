@@ -125,9 +125,15 @@ cat << EOF
                   <h4>                  
 EOF
 
-    echo "<br><br>"
+    echo "<br>"
     echo $"Arquivo salvo: "
     echo "$(cat ~/.config/bigocrpdf/savefile)"
+
+    echo "<br><br>"
+    echo '<textarea id="show_ocr_txt" rows="5" cols="33">'
+    cat "$HOME/.config/bigocrpdf/text.txt"
+    rm "$HOME/.config/bigocrpdf/text.txt"
+    echo '</textarea>'
 
 cat << EOF
 

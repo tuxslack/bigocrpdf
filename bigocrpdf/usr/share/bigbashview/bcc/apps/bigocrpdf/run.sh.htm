@@ -14,7 +14,8 @@ xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -
 
 echo "$quality" > ~/.config/bigocrpdf/quality
 echo "$lang" > ~/.config/bigocrpdf/lang
-echo "$savefile" > ~/.config/bigocrpdf/savefile
+echo "$align" > ~/.config/bigocrpdf/align
+echo "$savefile" |sed 's|\.jpg$||gI;s|\.jpeg$||gI;s|\.png$||gI;s| -ocr|-ocr.pdf|g' > ~/.config/bigocrpdf/savefile
 
 # Import BigControlCenter base modules / Importa os módulos básicos do BigControlCenter
 # That's include jquery and materialize / Isso inclui o jquery e o materialize

@@ -1915,3 +1915,11 @@ li img {
   text-align: center;
 }
 
+textarea#show_ocr_txt {
+    width: 100%;
+    height: 139px;
+    padding: 8px;
+    border-radius: 7px;
+    font-family: lato;
+    font-size: 16px;
+}

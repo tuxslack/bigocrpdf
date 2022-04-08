@@ -18,11 +18,15 @@ xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -
 FILE="$(cat ~/.config/bigocrpdf/selected-file)"
 PAGES="$(pdfinfo "$FILE" | grep "Pages:" | cut -f2 -d:)"
 FOLDER="$(dirname "$FILE")"
-FILENAME="$(basename "$FILE" | sed 's|\.pdf$||gI')"
+FILENAME="$(basename "$FILE" | sed 's|\.pdf$||gI;s|\.jpg$||gI;s|\.jpeg$||gI;s|\.png$||gI;s| -ocr.pdf|-ocr.pdf|g')"
 
 NORMAL=$"NORMAL"
 ECONOMIC=$"ECONOMIC"
 ECONOMICPLUS=$"ECONOMIC PLUS"
+ALIGN=$"ALIGN"
+ROTATE=$"AUTO ROTATE"
+ALIGNROTATE=$"ALIGN AND AUTO ROTATE"
+NONE=$"DON'T CHANGE"
 SPANISH=$"SPANISH"
 ENGLISH=$"ENGLISH"
 PORTUGUESE=$"PORTUGUESE"
@@ -87,31 +91,25 @@ cat << EOF
       </div>
 
       <div class="user">
-        <div class="form-wrap"> 
-          <div class="form-wrap tabs-content">
+
 EOF
-  echo '<h2>'
-  echo $"OCR para PDF"
-  echo '</h2>'
+
 cat << EOF              
 
-          </div>
           <!-- TABS CONTENT -->
           <div class="tabs-content">
             <!-- INICIO TABS CONTENT LIST -->
             <div id="list-tab-content" class="fc-card active">
 
               <div class="centretext" style="margin-bottom: 30px;">
-                <div id="desc">
                   
 EOF
   echo '<h3>'
-  echo $"Adcionar OCR no PDF digitalizado permitindo seleção de textos e busca:"
+  echo $"Adicionar OCR no PDF digitalizado permitindo seleção de textos e busca:"
   echo '</h3>'
 cat << EOF                   
                   
                 </div>
-              </div>
 
               <div class="content-section" style="margin-top: 0px;"> 
                 <div style="text-align: center; margin: auto; padding: auto;">
@@ -121,9 +119,7 @@ cat << EOF
                   <div class="biglinux-dashboard">
                     <div class="biglinux-center-panel" style="text-align: left;">
 EOF
-  echo '<h4>'
-  echo $"Informações do arquivo"
-  echo '</h4>'
+
 cat << EOF                     
                                                      
                       <form action="run.sh.htm" method="get">
@@ -180,7 +176,7 @@ fi
     done
     
 echo '</select>'
-                        
+
 cat << EOF
                           
                           
@@ -213,6 +209,46 @@ fi
 
 
 echo '</select></div>'
+
+
+cat << EOF
+                          
+                          
+                          </label></li>
+                          <li>Alinhamento:
+                        <label for="s2" style="margin:0px; padding:0px; width: 100%; text-align:right;">
+                        
+EOF
+
+echo "<div id=options_right  class=\"tooltipped with-gap\" data-position=\"top\" data-delay=\"50\" data-tooltip=\"<br>$TOOLTIP_QUALITY<br><br>\">"
+    
+# Verify previous selected LANG
+PDF_ALIGN="$(cat ~/.config/bigocrpdf/align)"
+
+if [ "$PDF_ALIGN" = "" ];then
+    CHECKED_NONE="selected"
+fi
+
+if [ "$PDF_ALIGN" = "-d" ];then
+    CHECKED_ALIGN="selected"
+fi
+
+if [ "$PDF_ALIGN" = "-r" ];then
+    CHECKED_ROTATE="selected"
+fi
+
+if [ "$PDF_ALIGN" = "-dr" ];then
+    CHECKED_ALIGNROTATE="selected"
+fi
+        echo "<select name=align id=align>"
+        echo "<option value=\"\" $CHECKED_NONE>$NONE</option>"
+        echo "<option value=\"-d\" $CHECKED_ALIGN>$ALIGN</option>"
+        echo "<option value=\"-r\" $CHECKED_ROTATE>$ROTATE</option>"
+        echo "<option value=\"-dr\" $CHECKED_ALIGNROTATE>$ALIGNROTATE</option>"
+
+
+echo '</select></div>'
+
 
 cat << EOF
                           </label></li>

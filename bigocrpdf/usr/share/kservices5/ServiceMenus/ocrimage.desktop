@@ -1,0 +1,14 @@
+[Desktop Entry]
+ServiceTypes=KonqPopupMenu/Plugin
+Actions=OCR;
+Type=Service
+MimeType=image/jpeg;image/png;image/bmp;image/webp;image/tiff;
+X-KDE-Priority=TopLevel
+
+[Desktop Action OCR]
+Name=Extract text from image (OCR)
+Name[es]=Extraer texto de la imagen (OCR)
+Name[pt_BR]=Extrair texto da imagem (OCR)
+Name[pt]=Extrair texto da imagem (OCR)
+Icon=text-x-generic
+Exec=bigocrimage "%u"

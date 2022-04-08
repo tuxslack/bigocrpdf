@@ -8,7 +8,7 @@ kdialog --passivepopup $"Escolha o arquivo PDF para aplicar o OCR, com isso ser�
 
 Você também pode utilizar o gerenciador de arquivos, clicar com o botão direito no arquivo PDF, 'Abrir com' e selecionar a opção de OCR."  10 &
 
-FILE_ADDR="$(kdialog --getopenfilename ~)"
+FILE_ADDR="$(kdialog --multiple --getopenurl ~ | sed 's|file:///|\n/|g')"
 
 if [ "$FILE_ADDR" != "" ]; then
     bigocrpdf "$FILE_ADDR"
