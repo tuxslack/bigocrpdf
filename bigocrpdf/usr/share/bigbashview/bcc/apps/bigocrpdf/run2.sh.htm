@@ -9,6 +9,11 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=bigocrpdf
 
+desc_pdftoocr=$"ORC para PDF"
+desc_file=$"Arquivo"
+desc_directory=$"Pasta:"
+desc_open=$"Abrir"
+
 # Don't group windows
 xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -set WM_CLASS "$$"
 
@@ -27,7 +32,7 @@ cat << EOF
 
 EOF
  
-    echo '<title>' $"Make your PDF searchable" '</title>'
+    echo '<title>' $"Torne seu PDF pesquisável" '</title>'
 
 cat << EOF
 
@@ -63,7 +68,7 @@ cat << EOF
       <div class="user">
         <div class="form-wrap"> 
           <div class="form-wrap tabs-content">
-            <h2>ORC para PDF</h2>
+            <h2>$desc_pdftoocr</h2>
           </div>
           <!-- TABS CONTENT -->
           <div class="tabs-content">
@@ -78,7 +83,7 @@ EOF
 WINDOW_ID="$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" urxvt +sb -internalBorder 1 -borderColor rgb:00/22/40 -depth 32 -fg rgb:00/ff/ff -bg rgb:00/22/40 -fn "xft:Ubuntu Mono:pixelsize=18" -embed $(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2) -sr -bc -e /usr/share/bigbashview/bcc/apps/bigocrpdf/run_terminal.sh
 
   
-    echo $"Completed!"
+    echo $"Concluído!"
     
 cat << EOF                  
                   </h3>
@@ -92,14 +97,14 @@ cat << EOF
                       <div class="biglinux-left-panel left" style="width: 150px;">
                       <div class="centretext">
                         <div id="desc">
-                          <h5>Arquivo:</h5>
+                          <h5>$desc_file</h5>
                         </div>
                       </div> 
                         <div style="width: 80px; margin-bottom: 10px; margin-top: 10px;" class="svg-center">
                         <object data="icon-big-ocr-pdf.svg" width="80" height="80"> </object>
                         </div>
                         <div class="svg-center">
-                          <input type="submit" class="button svg-center" value="Abrir" onclick="_run('./pdf.run')">
+                          <input type="submit" class="button svg-center" value="$desc_open" onclick="_run('./pdf.run')">
                         </div>
                       </div>
                     </li>
@@ -107,14 +112,14 @@ cat << EOF
                       <div class="biglinux-left-panel left" style="width: 150px;">
                       <div class="centretext">
                         <div id="desc">
-                          <h5>Pasta:</h5>
+                          <h5>$desc_directory</h5>
                         </div>
                       </div> 
                         <div style="width: 80px; margin-bottom: 10px; margin-top: 10px;" class="svg-center">
                          <object data="icon_big-diretory.svg" width="80" height="80"> </object>
                         </div>
                         <div class="svg-center">
-                          <input type="submit" class="button svg-center" value="Abrir" onclick="_run('./opendirectory.run')">
+                          <input type="submit" class="button svg-center" value="$desc_open" onclick="_run('./opendirectory.run')">
                         </div>
                       </div>
                     </li>  
