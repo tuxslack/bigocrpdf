@@ -9,6 +9,8 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=bigocrpdf
 
+desc_pdftoocr=$"ORC para PDF"
+
 # Don't group windows
 xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -set WM_CLASS "$$"
 
@@ -32,7 +34,7 @@ cat << EOF
 
 EOF
  
-    echo '<title>' $"Make your PDF searchable" '</title>'
+    echo '<title>' $"Torne seu PDF pesquisável" '</title>'
 
 cat << EOF
 
@@ -169,7 +171,7 @@ cat << EOF
       <div class="user">
         <div class="form-wrap"> 
           <div class="form-wrap tabs-content">
-            <h2>ORC para PDF</h2>
+            <h2>$desc_pdftoocr</h2>
           </div>
           <!-- TABS CONTENT -->
           <div class="tabs-content">
@@ -180,7 +182,7 @@ cat << EOF
                 <div id="desc">
                   <h3>
 EOF
-                  #echo $"Processing, please wait..."
+                  #echo $"Processando ... Por favor aguarde..."
 cat << EOF                  
                   </h3>
                 </div>
