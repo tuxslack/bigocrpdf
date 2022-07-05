@@ -9,8 +9,6 @@
 export TEXTDOMAINDIR="/usr/share/locale"
 export TEXTDOMAIN=bigocrpdf
 
-desc_pdftoocr=$"OCR para PDF"
-
 # Don't group windows
 xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -set WM_CLASS "$$"
 
@@ -33,8 +31,7 @@ cat << EOF
   <meta charset="UTF-8">
 
 EOF
- 
-    echo '<title>' $"Torne seu PDF pesquisável" '</title>'
+
 
 cat << EOF
 
@@ -130,10 +127,6 @@ div#box_progress_config_bar {
 }
 </style>'
 
-
-# Get body tag with color light or not
-/usr/share/bigbashview/bcc/shell/getbgcolor.sh
-
 OIFS=$IFS
 IFS=$'\n'
 
@@ -171,7 +164,7 @@ cat << EOF
       <div class="user">
         <div class="form-wrap"> 
           <div class="form-wrap tabs-content">
-            <h2>$desc_pdftoocr</h2>
+            <h2>ORC para PDF</h2>
           </div>
           <!-- TABS CONTENT -->
           <div class="tabs-content">
@@ -182,7 +175,7 @@ cat << EOF
                 <div id="desc">
                   <h3>
 EOF
-                  #echo $"Processando ... Por favor aguarde..."
+                  #echo $"Processing, please wait..."
 cat << EOF                  
                   </h3>
                 </div>

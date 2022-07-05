@@ -13,26 +13,31 @@ xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -
 # http://materializecss.com/
 . /usr/share/bigbashview/bcc/shell/base.sh
 
-
+OIFS=$IFS
+IFS=$'\n'
 
 FILE="$(cat ~/.config/bigocrpdf/selected-file)"
-PAGES="$(pdfinfo "$FILE" | grep "Pages:" | cut -f2 -d:)"
-FOLDER="$(dirname "$FILE")"
+
+    #Detect number of pages
+    PAGES=0
+    for i  in  $FILE; do
+      PAGES=$[ $PAGES + $(pdfinfo "$i" | grep "Pages:" | cut -f2 -d:) ]
+    done
+
+FOLDER="$(dirname "$(head -n1 ~/.config/bigocrpdf/selected-file)")"
 FILENAME="$(basename "$FILE" | sed 's|\.pdf$||gI;s|\.jpg$||gI;s|\.jpeg$||gI;s|\.png$||gI;s| -ocr.pdf|-ocr.pdf|g')"
 
-NORMAL=$"NORMAL"
-ECONOMIC=$"ECONÔMICO"
-ECONOMICPLUS=$"MAIS ECONÔMICO"
-ALIGN=$"ALINHAR"
-ROTATE=$"AUTO ROTAÇÃO"
-ALIGNROTATE=$"ALINHAR E GIRAR AUTOMÁTICA"
-NONE=$"NÃO MUDE"
-SPANISH=$"ESPANHOL"
-ENGLISH=$"INGLÊS"
-PORTUGUESE=$"PORTUGUÊS"
-TOOLTIP_QUALITY=$"Você pode optar por reduzir a qualidade da imagem.<br>Dessa forma você terá arquivos menores, facilitando,<br>por exemplo, enviá-los por e-mail."
-TOOLTIP_LANG=$"Para adicionar novos idiomas, instale os complementos do tesseract no gerenciador de pacotes do sistema."
-desc_apply=$"Aplicar"
+NORMAL=$"Normal"
+ECONOMIC=$"Economico"
+ECONOMICPLUS=$"Mais econômico"
+ALIGN=$"Alinhar"
+ROTATE=$"Auto rotacionar"
+ALIGNROTATE=$"Alinhar e auto rotacionar"
+NONE=$"Não alterar"
+SPANISH=$"Espanhol"
+ENGLISH=$"Inglês"
+PORTUGUESE=$"Português"
+
 
 if [ ! -w "$FOLDER" ]
 then
@@ -59,7 +64,7 @@ cat << EOF
 
 EOF
  
-    echo '<title>' $"Torne seu PDF pesquisável" '</title>'
+
 
 cat << EOF
 
@@ -72,8 +77,7 @@ EOF
 # Get body tag with color light or not
 /usr/share/bigbashview/bcc/shell/getbgcolor.sh
 
-OIFS=$IFS
-IFS=$'\n'
+
 
 cat << EOF
 
@@ -120,19 +124,26 @@ cat << EOF
                     <div class="biglinux-center-panel" style="text-align: left;">
 EOF
 
-cat << EOF                     
+cat << EOF
                                                      
                       <form action="run.sh.htm" method="get">
                       <div class="biglinux-card">
                         <ul>
-                          <li>Origem: 
-                            <label for="s0" style="margin:0px; padding:0px; width: 100%; text-align:right;"> <input value="$FILE" style="width: 100%; background: transparent; border: none; color: var(--text-a-color); margin-left:5px;"></label></li>
-                          <li>Páginas: 
-                            <label for="s0" style="margin:0px; padding:0px; width: 100%; text-align:right;">$PAGES</label></li>
-                          <li>Idioma do PDF:
-                        <label for="s1" style="margin:0px; padding:0px; width: 100%; text-align:right;">
-                        
 EOF
+
+                echo '<li>' $"Quantidade de arquivos:"
+cat << EOF
+                  <label for="s0" style="margin:0px; padding:0px; width: 100%; text-align:right;">$(cat ~/.config/bigocrpdf/selected-file | wc -l)</label></li>
+EOF
+                echo '<li>' $"Páginas:" 
+cat << EOF
+                  <label for="s0" style="margin:0px; padding:0px; width: 100%; text-align:right;">$PAGES</label></li>
+EOF
+                echo '<li>' $"Idioma do PDF:" 
+cat << EOF
+              <label for="s1" style="margin:0px; padding:0px; width: 100%; text-align:right;">
+EOF
+
                        
 echo '<select id="lang" name="lang">'
 
@@ -177,14 +188,10 @@ fi
     
 echo '</select>'
 
-cat << EOF
                           
-                          
-                          </label></li>
-                          <li>Qualidade do PDF:
-                        <label for="s2" style="margin:0px; padding:0px; width: 100%; text-align:right;">
-                        
-EOF
+    echo '</label></li><li>'
+    echo $"Qualidade do PDF:"
+    echo '<label for="s2" style="margin:0px; padding:0px; width: 100%; text-align:right;">'
 
 echo "<div id=options_right  class=\"tooltipped with-gap\" data-position=\"top\" data-delay=\"50\" data-tooltip=\"<br>$TOOLTIP_QUALITY<br><br>\">"
     
@@ -211,14 +218,11 @@ fi
 echo '</select></div>'
 
 
-cat << EOF
-                          
-                          
-                          </label></li>
-                          <li>Alinhamento:
-                        <label for="s2" style="margin:0px; padding:0px; width: 100%; text-align:right;">
-                        
-EOF
+
+      echo '</label></li><li>'
+      echo $"Alinhamento:"
+      echo '<label for="s2" style="margin:0px; padding:0px; width: 100%; text-align:right;">'
+
 
 echo "<div id=options_right  class=\"tooltipped with-gap\" data-position=\"top\" data-delay=\"50\" data-tooltip=\"<br>$TOOLTIP_QUALITY<br><br>\">"
     
@@ -260,7 +264,14 @@ EOF
 #echo "$SAVEFILE" "</div></div>"
 #echo "</div></div>"
 #echo "<input type=\"hidden\" id=\"savefile\" name=\"savefile\" value=\"$SAVEFILE\">"
-echo "<input type=\"textc\" id=\"savefile\" name=\"savefile\" value=\"$SAVEFILE\" style=\"width: 100%; background: transparent; border: none; color: var(--text-a-color); margin-left:5px;\">"
+
+
+#Support multi pdf
+if [ "$(cat ~/.config/bigocrpdf/selected-file | wc -l)" -gt "1" ]; then
+  echo "<input type=\"textc\" id=\"savefile\" name=\"savefile\" value=\"$FOLDER\" style=\"width: 100%; background: transparent; border: none; color: var(--text-a-color); margin-left:5px;\">"
+else
+  echo "<input type=\"textc\" id=\"savefile\" name=\"savefile\" value=\"$SAVEFILE\" style=\"width: 100%; background: transparent; border: none; color: var(--text-a-color); margin-left:5px;\">"
+fi
 
 #echo "<input type=\"text\" id=\"savefile\" name=\"savefile\" value=\"$SAVEFILE\" style=\"width: 100%; background: transparent; border: none; color: #fff; margin-left:5px;\">"
 
@@ -274,15 +285,13 @@ cat << EOF
                   </div>
                   <br style="clear: left;" />
                 </div>
-                <!-- FIM - TELA QUANDO NÃO ENCONTRAR NENHUM WEBAPP -->                                
               </div>
 
-              <!-- INICIO - TELA EDITAR WEBAPP -->
 
 
               <div id="desc">   
                   <div style="text-align: center; display:inline-block;">
-                    <label for="$desc_apply"><input type="submit" class="button" value="$desc_apply" style="margin-right:10px;"></label>
+                    <label for="Aplicar"><input type="submit" class="button" value="Aplicar" style="margin-right:10px;"></label>
                   </div> 
               </div>       
                 </form>
