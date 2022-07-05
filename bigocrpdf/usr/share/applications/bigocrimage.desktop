@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Extract text from image (OCR)
+Name[pt]=Extrair o texto da imagem (OCR)
+Name[es]=Extraer texto de la imagen (OCR)
+Exec=bigocrimage %f
+Terminal=false
+Icon=/usr/share/bigbashview/bcc/apps/bigocrpdf/icons-mini-big-ocr-pdf.svg
+Type=Application
+NoDisplay=true
+MimeType=application/pdf;application/x-bzpdf;application/x-gzpdf;
