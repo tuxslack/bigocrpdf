@@ -16,4 +16,4 @@ done
 
 cd /usr/share/bigbashview/bcc/apps/bigocrpdf/
 
-LANGUAGE=$BIGBASHVIEW_LANG GDK_BACKEND=x11 SDL_VIDEODRIVER=x11 QT_QPA_PLARFORM=xcb bigbashview index.sh.htm -s 1050x600 -i icon-big-ocr-pdf.svg
+LANGUAGE=$BIGBASHVIEW_LANG GDK_BACKEND=x11 SDL_VIDEODRIVER=x11 QT_QPA_PLARFORM=xcb bigbashview index.sh.htm -s 1050x600 -i icon-big-ocr-pdf.svg -n $"Torne seu PDF pesquisável"
