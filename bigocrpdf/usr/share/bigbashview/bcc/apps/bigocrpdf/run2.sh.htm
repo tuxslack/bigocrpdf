@@ -18,6 +18,9 @@ xprop -id "$(xprop -root '\t$0' _NET_ACTIVE_WINDOW | cut -f 2)" -f WM_CLASS 8s -
 # http://materializecss.com/
 . /usr/share/bigbashview/bcc/shell/base.sh
 
+Open=$"Abrir"
+File=$"Arquivo:"
+Folder=$"Pasta:"
 cat << EOF
 
 <html>
@@ -91,7 +94,7 @@ cat << EOF
                       <div class="biglinux-left-panel left" style="width: 150px; float: unset;">
                       <div class="centretext">
                         <div id="desc">
-                          <h5>Pasta:</h5>
+                          <h5>$Folder</h5>
                         </div>
                       </div> 
                         <div style="width: 80px; margin-bottom: 10px; margin-top: 10px;" class="svg-center">
@@ -129,14 +132,14 @@ cat << EOF
                       <div class="biglinux-left-panel left" style="width: 150px;">
                       <div class="centretext">
                         <div id="desc">
-                          <h5>Arquivo:</h5>
+                          <h5>$File</h5>
                         </div>
                       </div> 
                         <div style="width: 80px; margin-bottom: 10px; margin-top: 10px;" class="svg-center">
                         <object data="icon-big-ocr-pdf.svg" width="80" height="80"> </object>
                         </div>
                         <div class="svg-center">
-                          <input type="submit" class="button svg-center" value="Abrir" onclick="_run('./pdf.run')">
+                          <input type="submit" class="button svg-center" value="$Open" onclick="_run('./pdf.run')">
                         </div>
                       </div>
                     </li>
@@ -144,14 +147,14 @@ cat << EOF
                       <div class="biglinux-left-panel left" style="width: 150px;">
                       <div class="centretext">
                         <div id="desc">
-                          <h5>Pasta:</h5>
+                          <h5>$Folder</h5>
                         </div>
                       </div> 
                         <div style="width: 80px; margin-bottom: 10px; margin-top: 10px;" class="svg-center">
                          <object data="icon_big-diretory.svg" width="80" height="80"> </object>
                         </div>
                         <div class="svg-center">
-                          <input type="submit" class="button svg-center" value="Abrir" onclick="_run('./opendirectory.run')">
+                          <input type="submit" class="button svg-center" value="$Open" onclick="_run('./opendirectory.run')">
                         </div>
                       </div>
                     </li>  
