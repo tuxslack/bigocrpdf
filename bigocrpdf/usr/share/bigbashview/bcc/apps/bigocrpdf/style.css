@@ -470,23 +470,27 @@ a.button:hover {
 }
 
 /* LOGO */
+.logo-biglinux {
+    filter: var(--logo-big);
+}
 .logo {
-  z-index: 2;
-  position: absolute;
-  top: 91%;
-  left: 10px;
-  width: 40px;
-  height: 40px;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 100%;
+    display: block;
 }
 
 .logo img {
   position: absolute;
-  margin: auto;
+  margin-top: auto;
   top: 0;
   right: 0;
-  bottom: 0;
-  left: 0;
-  width: 30px;
+  bottom: 20px;
+  left: 20px;
+  width: 40px
 }
 
 .logo a {

@@ -25,6 +25,7 @@ FILE="$(cat ~/.config/bigocrpdf/selected-file)"
     done
 
 FOLDER="$(dirname "$(head -n1 ~/.config/bigocrpdf/selected-file)")"
+
 FILENAME="$(basename "$FILE" | sed 's|\.pdf$||gI;s|\.jpg$||gI;s|\.jpeg$||gI;s|\.png$||gI;s| -ocr.pdf|-ocr.pdf|g')"
 
 NORMAL=$"Normal"
@@ -91,7 +92,7 @@ cat << EOF
     <div class="user">
 
       <div class="logo">
-        <a href="#"><img src="logo-big-trans-branco.png" alt=""></a>
+        <img src="logo-big-trans-branco.png" alt="logo" class="logo-biglinux">
       </div>
 
       <div class="user">
