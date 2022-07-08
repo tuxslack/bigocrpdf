@@ -2,7 +2,7 @@
 Name=Make your scanned PDF support text search and copy (OCR)
 Name[pt]=Adicionar suporte a copiar ou procurar textos em PDF digitalizado (OCR)
 Name[es]=Agrega soporte para copiar o buscar texto en PDF escaneado (OCR)
-Exec=QT_QUICK_BACKEND= bigocrpdf %f
+Exec=QT_QUICK_BACKEND= bigocrpdf %F
 Terminal=false
 Icon=/usr/share/bigbashview/bcc/apps/bigocrpdf/icons-mini-big-ocr-pdf.svg
 Type=Application
