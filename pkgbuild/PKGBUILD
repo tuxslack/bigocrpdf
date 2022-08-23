@@ -1,0 +1,38 @@
+# Maintainer: Bruno Goncalves <bigbruno@gmail.com>
+
+pkgname=bigocrpdf
+pkgver=$(date +%y.%m.%d)
+pkgrel=$(date +%H%M)
+arch=('any')
+license=('GPL')
+url="https://github.com/biglinux/bigocrpdf"
+pkgdesc="The simplest way to apply OCR to your PDF files, making it possible to search and copy texts from scanned files."
+depends=('bigbashview' 'python-sortedcontainers' 'ocrmypdf' 'rxvt-unicode' 'jbigkit' 'python-pdfminer>=20220524')
+optdepends=('tesseract-data-por'
+            'tesseract-data-eng'
+            'tesseract-data-spa')
+source=("git+https://github.com/biglinux/bigocrpdf.git")
+md5sums=(SKIP)
+
+package() {
+    # Verify default folder
+    if [ -d "${srcdir}/${pkgname}/${pkgname}" ]; then
+        InternalDir="${srcdir}/${pkgname}/${pkgname}"
+    else
+        InternalDir="${srcdir}/${pkgname}"
+    fi
+
+
+    # Copy files
+    if [ -d "${InternalDir}/usr" ]; then
+        cp -r "${InternalDir}/usr" "${pkgdir}/"
+    fi
+
+    if [ -d "${InternalDir}/etc" ]; then
+        cp -r "${InternalDir}/etc" "${pkgdir}/"
+    fi
+
+    if [ -d "${InternalDir}/opt" ]; then
+        cp -r "${InternalDir}/opt" "${pkgdir}/"
+    fi
+}
