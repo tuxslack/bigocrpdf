@@ -7,8 +7,6 @@
 msgid   ""
 msgstr  "Project-Id-Version: bigocrpdf\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2022-07-23 19:21-0300\n"
-        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
         "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
         "Language: \n"
@@ -16,15 +14,18 @@ msgstr  "Project-Id-Version: bigocrpdf\n"
         "Content-Type: text/plain; charset=UTF-8\n"
         "Content-Transfer-Encoding: 8bit\n"
 
-msgid   "Torne seu PDF pesquisável"
-msgstr  ""
-
 msgid   "Escolha o arquivo PDF para aplicar o OCR, com isso será possível "
         "efetuar buscas ou copiar textos.\n"
         "\n"
         "Você também pode utilizar o gerenciador de arquivos, clicar com o "
         "botão direito no arquivo PDF, 'Abrir com' e selecionar a opção de "
         "OCR."
+msgstr  ""
+
+msgid   "Torne seu PDF pesquisável"
+msgstr  ""
+
+msgid   "Aplicando - Aguarde"
 msgstr  ""
 
 msgid   "Normal"
@@ -80,9 +81,6 @@ msgid   "Qualidade do PDF:"
 msgstr  ""
 
 msgid   "Alinhamento:"
-msgstr  ""
-
-msgid   "Aplicando - Aguarde"
 msgstr  ""
 
 msgid   "Abrir"
