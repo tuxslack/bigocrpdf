@@ -1,7 +1,32 @@
 [Desktop Entry]
 Name=Make your scanned PDF support text search and copy (OCR)
+Name[bg]=Добавяне на поддръжка за копиране или търсене на сканиран PDF текст (OCR)
+Name[cs]=Přidání podpory pro kopírování nebo vyhledávání naskenovaného textu PDF (OCR)
+Name[da]=Tilføj understøttelse af kopiering eller søgning efter scannet PDF-tekst (OCR)
+Name[de]=Unterstützung für das Kopieren oder Suchen nach gescanntem PDF-Text (OCR) hinzugefügt
+Name[el]=Προσθήκη υποστήριξης για αντιγραφή ή αναζήτηση σαρωμένου κειμένου PDF (OCR)
+Name[es]=Agregar soporte para copiar o buscar texto PDF escaneado (OCR)
+Name[et]=Skannitud PDF-teksti kopeerimise või otsimise toe lisamine (OCR)
+Name[fi]=Lisää tuki skannatun PDF-tekstin kopioinnille tai etsimiselle (OCR)
+Name[fr]=Ajout de la prise en charge de la copie ou de la recherche de texte PDF numérisé (OCR)
+Name[he]=הוספת תמיכה להעתקה או חיפוש של טקסט PDF סרוק (OCR)
+Name[hr]=Dodavanje podrške za kopiranje ili traženje skeniranog TEKSTA u PDF-u (OCR)
+Name[hu]=Támogatás hozzáadása a beolvasott PDF-szöveg (OCR) másolásához vagy kereséséhez
+Name[is]=Bættu við stuðningi við afritun eða leit að skönnuðum PDF texta (OCR)
+Name[it]=Aggiungere il supporto per la copia o la ricerca di testo PDF digitalizzato (OCR)
+Name[ja]=スキャンしたPDFテキスト(OCR)のコピーまたは検索のサポートを追加する
+Name[ko]=스캔한 PDF 텍스트(OCR)의 복사 또는 검색에 대한 지원 추가
+Name[nl]=Ondersteuning toevoegen voor het kopiëren of zoeken naar gescande PDF-tekst (OCR)
+Name[no]=Legge til støtte for kopiering eller søking etter skannet PDF-tekst (OCR)
+Name[pl]=Dodaj obsługę kopiowania lub wyszukiwania zeskanowanego tekstu PDF (OCR)
 Name[pt]=Adicionar suporte a copiar ou procurar textos em PDF digitalizado (OCR)
-Name[es]=Agrega soporte para copiar o buscar texto en PDF escaneado (OCR)
+Name[ro]=Adăugarea suportului pentru copierea sau căutarea textului PDF scanat (OCR)
+Name[ru]=Добавление поддержки копирования или поиска отсканированного текста PDF (OCR)
+Name[sk]=Pridanie podpory kopírovania alebo vyhľadávania naskenovaného textu PDF (OCR)
+Name[sv]=Lägg till stöd för kopiering eller sökning efter skannad PDF-text (OCR)
+Name[tr]=Taranmış PDF metnini (OCR) kopyalamak veya aramak için destek ekleme
+Name[uk]=Додавання підтримки копіювання або пошуку відсканованого тексту PDF (OCR)
+Name[zh]=添加对复制或搜索扫描的 PDF 文本 （OCR） 的支持
 Exec=QT_QUICK_BACKEND= bigocrpdf %F
 Terminal=false
 Icon=/usr/share/bigbashview/bcc/apps/bigocrpdf/icons-mini-big-ocr-pdf.svg
