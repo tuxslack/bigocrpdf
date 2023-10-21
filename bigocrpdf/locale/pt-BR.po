@@ -31,27 +31,6 @@ msgstr ""
 msgid "Torne seu PDF pesquisável"
 msgstr "Torne seu PDF pesquisável"
 
-msgid "Aplicando - Aguarde"
-msgstr "Aplicando - Aguarde"
-
-msgid "Abrir"
-msgstr "Abrir"
-
-msgid "Arquivo:"
-msgstr "Arquivo:"
-
-msgid "Pasta:"
-msgstr "Pasta:"
-
-msgid "OCR para PDF"
-msgstr "OCR para PDF"
-
-msgid "Concluído!"
-msgstr "Concluído!"
-
-msgid "Salvo em: "
-msgstr "Salvo em: "
-
 msgid "Normal"
 msgstr "Normal"
 
@@ -106,3 +85,24 @@ msgstr "Qualidade do PDF:"
 
 msgid "Alinhamento:"
 msgstr "Alinhamento:"
+
+msgid "Aplicando - Aguarde"
+msgstr "Aplicando - Aguarde"
+
+msgid "Abrir"
+msgstr "Abrir"
+
+msgid "Arquivo:"
+msgstr "Arquivo:"
+
+msgid "Pasta:"
+msgstr "Pasta:"
+
+msgid "OCR para PDF"
+msgstr "OCR para PDF"
+
+msgid "Concluído!"
+msgstr "Concluído!"
+
+msgid "Salvo em: "
+msgstr "Salvo em: "
