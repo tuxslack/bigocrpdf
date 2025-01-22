@@ -24,3 +24,6 @@ E ainda é possível utilizar diretamente da ferramenta de captura de tela, por 
 
 
 ![01](https://user-images.githubusercontent.com/6098501/178167560-d00d941c-8ba7-46b9-9c64-4bd1a8a47a13.jpeg)
+
+
+https://www.youtube.com/watch?v=AWZWbVnGYos
